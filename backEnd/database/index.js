@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 const config = {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Thamer96',
     database: 'reactmysql'
   };
 
@@ -31,7 +31,7 @@ const postall=(callback,data) => {
    })
 };
 const deletone=(callback,id) => {
-    const sql='DELETE FROM product WHERE idposts= ?'
+    const sql='DELETE FROM product WHERE id= ?'
    connection.query(sql,id,(err,results)=>{
     if(err) console.log(err)
     else callback(err,results)

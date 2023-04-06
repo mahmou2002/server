@@ -1,6 +1,6 @@
 const express = require('express');
 const cors =require('cors');
-const { getAllProducts, postall,deletone,putone} = require('../backend/database/index');
+const { getAllProducts, postall,deletone,putone} = require('../backEnd/database/index');
 const port = 5002;
 const app = express()
 app.use(express.json())
@@ -20,7 +20,7 @@ app.get('/api/product',(req,res)=> {
 })
   
 app.post('/api/product/add',(req,res)=>{
-    console.log(req.body.title) 
+    
   postall((err,results)=>{
    if(err) res.status(500).send(err)
    else res.status(200).send(results)
