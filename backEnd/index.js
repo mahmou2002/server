@@ -1,7 +1,7 @@
 const express = require('express');
 const cors =require('cors');
-const { getAllProducts, postall,deletone,putone} = require('../backEnd/database/index');
-const port = 5001;
+const { getAllProducts, postall,deletone,putone} = require('../backend/database/index');
+const port = 5002;
 const app = express()
 app.use(express.json())
 //uncomment to use mongodb
