@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const AdminInterface = ({prod}) => {
 
-
+const navigate=useNavigate()
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5002/api/rent/delete/${id}`);
@@ -15,11 +15,15 @@ const AdminInterface = ({prod}) => {
 
 
   return (
-    <div>
+    <div >
+      <div>
+      <button className='button' onClick={()=>navigate("/add") }> Add product </button>
+      <button className='button' onClick={()=>navigate("/") }> Signout </button>
+      </div>
        <div className="product">
         {prod.map((e) => (
-          <div className="product">
-            <img src={e.imageUrl} alt="img" />
+          <div key={e.id} className="product">
+            <img  className='img' src={e.imageUrl} alt="img" />
             <h2>{e.name}</h2>
             <p>{e.description}</p>
             <span>${e.price}</span>

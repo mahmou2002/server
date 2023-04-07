@@ -13,7 +13,9 @@ import { auth } from "./firebase";
 function App() {
  const [product,setProduct]= useState([]);
  const[toggle,setToggle]= useState(false);
-
+ const handelToggle=()=>{
+  setToggle(!toggle)
+ }
 
  useEffect(() => {
   const fetshProduct = async () => {
@@ -46,10 +48,10 @@ const [userName, setUserName] = useState("");
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/adminSpace" element={<AdminInterface prod={product} />} />
+          <Route path="/adminSpace" element={<AdminInterface handeltoggle={handelToggle} prod={product} />} />
           <Route path="/" element={<UserInterface product={product}/>} />
-          <Route path="/add" element={<Add/>} />
-          <Route path="/update/:id" element={<Update/>} />
+          <Route path="/add" element={<Add handeltoggle={handelToggle}/>} />
+          <Route path="/update/:id" element={<Update  handeltoggle={handelToggle}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home name={userName} />} />
