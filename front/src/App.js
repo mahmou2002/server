@@ -8,11 +8,13 @@ import Update from './Component/Update';
 import Home from './Component/home/Home';
 import Signup from './Component/Signup/Signup';
 import Login from './Component/Login/Login';
+import Search from './Component/Search';
 import './App.css';
 import { auth } from "./firebase";
 function App() {
  const [product,setProduct]= useState([]);
  const[toggle,setToggle]= useState(false);
+ const [userName, setUserName] = useState("");
  const handelToggle=()=>{
   setToggle(!toggle)
  }
@@ -29,7 +31,7 @@ function App() {
   fetshProduct();
 }, [toggle]);
 
-const [userName, setUserName] = useState("");
+
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -38,12 +40,16 @@ const [userName, setUserName] = useState("");
       } else setUserName("");
     });
   }, []);
-
+  
 
   return (
    <div>
     <div>
-  
+    <div className='nav'> 
+         <a href='/home' className="logo" >ADMIN</a>
+         
+           <Search/>
+        </div>
     </div>
     <div className="App">
       <BrowserRouter>

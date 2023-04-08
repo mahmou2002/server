@@ -12,7 +12,7 @@ const UserInterface = ({product}) => {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      const filteredBooks = product.filter((e) =>{ 
+      const filteredProduct = product.filter((e) =>{ 
         return e.name.toLowerCase().include( searchTerm.toLowerCase())
       });
       
@@ -23,11 +23,7 @@ const UserInterface = ({product}) => {
 
   return (
     <div>
-        <div className='nav'> 
-         <span className="logo" onClick={()=> navigate("/home")}>ADMIN</span>
-         
-           <Search/>
-        </div>
+        
         <div className="product">
           {product.map((e) => (
           <div key={e.id} className="product">
