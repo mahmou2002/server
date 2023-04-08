@@ -15,9 +15,12 @@ function App() {
  const [product,setProduct]= useState([]);
  const[toggle,setToggle]= useState(false);
  const [userName, setUserName] = useState("");
+ const [productfiltred,setProductFiltred ] = useState("")
+//  const [handelfilter,setHandelfilter] = useState(false)
  const handelToggle=()=>{
   setToggle(!toggle)
  }
+ 
 
  useEffect(() => {
   const fetshProduct = async () => {
@@ -32,7 +35,7 @@ function App() {
 }, [toggle]);
 
 
-
+ console.log(productfiltred);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -40,6 +43,16 @@ function App() {
       } else setUserName("");
     });
   }, []);
+  const handleSearch = (event) => {
+    setProductFiltred(event.target.value)
+  };
+  const handelSubmit=(event)=>{
+    event.preventDefault();
+    const productfilt = product.filter((e,i)=>{
+      return (e.name.toLowerCase()).includes( productfiltred.toLowerCase())
+    });
+    setProduct(productfilt)
+  };
   
 
   return (
@@ -48,7 +61,7 @@ function App() {
     <div className='nav'> 
          <a href='/home' className="logo" >ADMIN</a>
          
-           <Search/>
+           <Search  search={handelSubmit} handelsearch={handleSearch}/>
         </div>
     </div>
     <div className="App">
